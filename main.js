@@ -1,33 +1,26 @@
-const form = document.getElementById('form-tarefa');
-const nomeTarefa = [];
+function addTask() {
+    const taskInput = document.getElementById("taskInput");
+    const taskText = taskInput.value.trim();
 
-let linhas = '';
+    if (taskText !== "") {
+        const taskList = document.getElementById("taskList");
 
-form.addEventListener('submit', function(e) {
-    e.preventDefault(e);
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `${taskText}<li onclick="toggleStrikethrough(this)"></li>`;
 
-    adicionaLinha ();
-    atualizaTask ();
-
-}) 
-
-function adicionaLinha() {
-        let inputTask = document.getElementById('new-task');
-         
-    if (nomeTarefa.includes(inputTask.value)) {
-        alert(`Tarefa "${inputTask.value}" já foi adicionado`);
-    } else {
-        nomeTarefa.push(inputTask.value);
-         
-        let linha = '<li>';
-        linha +=`<li>>${inputTask.value}</li>`;
-        linha += '</li>';
-        linhas += linha;
+        taskList.appendChild(listItem);
+        taskInput.value="";
+       
     }
-    inputTask = '';
+    
 }
 
-function atualizaTask () {
-    const corpoList = document.getElementsByClassName('task-class');
-    corpoList.innerHTMl = linhas;
+function toggleStrikethrough(element) {
+    if (element.style.textDecoration === "line-through") {
+        element.style.textDecoration = "none";
+    } else {
+        element.style.textDecoration = "line-through";
+    }
 }
+
+
