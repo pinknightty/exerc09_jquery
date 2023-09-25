@@ -10,10 +10,11 @@ function addTask() {
 
         taskList.appendChild(listItem);
         taskInput.value="";
-       
+
     }
     
 }
+
 
 function toggleStrikethrough(element) {
     if (element.style.textDecoration === "line-through") {
@@ -21,6 +22,7 @@ function toggleStrikethrough(element) {
     } else {
         element.style.textDecoration = "line-through";
     }
+    $("#taskList").after(alert("Parabéns, você terminou suas tarefas!"));
 }
 
 
